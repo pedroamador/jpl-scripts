@@ -41,17 +41,18 @@ RUN gem install fastlane -NV
 
 # Installing Default Gradle
 WORKDIR $GRADLE_USER_HOME
-RUN touch /root/.android/repositories.cfg && \
-    wget https://services.gradle.org/distributions/${GRADLE_DEFAULT_FILE} && \
+RUN wget -q https://services.gradle.org/distributions/${GRADLE_DEFAULT_FILE} && \
     unzip $GRADLE_DEFAULT_FILE && \
     rm $GRADLE_DEFAULT_FILE
 
 # Installing Android SDK
 WORKDIR $ANDROID_HOME
-RUN wget https://dl.google.com/android/repository/${ANDROID_TOOLS_FILE} && \
+RUN mkdir -p /root/.android && \
+    touch /root/.android/repositories.cfg && \
+    wget -q https://dl.google.com/android/repository/${ANDROID_TOOLS_FILE} && \
     unzip $ANDROID_TOOLS_FILE && \
     rm $ANDROID_TOOLS_FILE && \
-    echo y | sdkmanager --verbose "platform-tools" "tools" "extras;android;m2repository" "extras;google;m2repository" "extras;google;google_play_services"
+    echo y | sdkmanager "platform-tools" "tools" "extras;android;m2repository" "extras;google;m2repository" "extras;google;google_play_services"
 
 RUN chmod 777 -R /var/lib/gems/2.3.0 /home
 
