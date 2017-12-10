@@ -37,8 +37,9 @@ pipeline {
         }
         stage ('Release finish') {
             agent { label 'docker' }
-            when { branch 'release/v*' }
+            when { expression { env.BRANCH_NAME.startsWith('release/v') && cfg.promoteBuild.enabled } }
             steps {
+                jplDockerPush (cfg, 'redpandaci/jpl-android-base', 'latest', 'https://registry.hub.docker.com', 'redpandaci-docker-credentials', 'docker/android')
                 jplCloseRelease(cfg)
             }
         }
