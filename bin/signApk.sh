@@ -98,7 +98,7 @@ ARTIFACT_SHA1=$(cat "${repositoryBasePath}/${signingPath}/credentials.json" |jq 
 
 echo -e "
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${repositoryBasePath}/${signingPath}/keystore.jks -storepass ${STORE_PASSWORD} -keypass ${KEY_PASSWORD} -signedjar ${signedUnalignedArtifactPath} ${artifactPath} ${KEY_ALIAS}
-" '$(find /usr/local/android-sdk/build-tools/ -name zipalign|sort|tail -n1)' " -v -p 4 ${signedUnalignedArtifactPath} ${signedAlignedArtifactPath}
+" '$(find /usr/local/android-sdk-linux/build-tools/ -name zipalign|sort|tail -n1)' " -v -p 4 ${signedUnalignedArtifactPath} ${signedAlignedArtifactPath}
 keytool -list -printcert -jarfile ${signedAlignedArtifactPath}
 " |docker run -w "${appFolder}/" --rm -i -v "${appFolder}/":"${appFolder}/":rw -v "${appFolder}/.gradle":/root/.gradle:rw -v "${appFolder}/.gem":/root/.gem:rw "${sdkVersion}" /bin/bash
 
