@@ -1,3 +1,13 @@
+<a name="0.1.1"></a>
+## 0.1.1 (2017-12-12)
+
+
+### Fix
+
+* Set correct path for zipalign ([a1ccde296d81447ac9e1b074bf40a3eabfa18813](https://github.com/red-panda-ci/jpl-scripts/commit/a1ccde296d81447ac9e1b074bf40a3eabfa18813))
+
+
+
 <a name="0.1.0"></a>
 # 0.1.0 (2017-12-10)
 
@@ -7,6 +17,7 @@
 * Add jpl ci stuff ([5392753b7ace950ec6eef6b96d8ffdeb99a0c53f](https://github.com/red-panda-ci/jpl-scripts/commit/5392753b7ace950ec6eef6b96d8ffdeb99a0c53f))
 * Fix typo in release finish stage ([2eebdedba57307d442ce86505ae94062ac885bbc](https://github.com/red-panda-ci/jpl-scripts/commit/2eebdedba57307d442ce86505ae94062ac885bbc))
 * Set executable flag to bin/test.sh ([ebb0efcc83c2c4f1645e42c036081d677a2ee9d7](https://github.com/red-panda-ci/jpl-scripts/commit/ebb0efcc83c2c4f1645e42c036081d677a2ee9d7))
+* Update CHANGELOG.md to v0.1.0 with Red Panda JPL ([7d253e0d1f3065f6767f8483da8c4b527ec8322f](https://github.com/red-panda-ci/jpl-scripts/commit/7d253e0d1f3065f6767f8483da8c4b527ec8322f))
 
 ### Docs
 
