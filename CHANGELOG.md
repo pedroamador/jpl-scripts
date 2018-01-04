@@ -1,6 +1,20 @@
+<a name="0.1.3"></a>
+## 0.1.3 (2018-01-04)
+
+
+### Update
+
+* Use script user/group in docker execution for signApk.sh script ([a7a456140b2e223a7c317497748a32ddc1b88615](https://github.com/red-panda-ci/jpl-scripts/commit/a7a456140b2e223a7c317497748a32ddc1b88615))
+
+
+
 <a name="0.1.2"></a>
 ## 0.1.2 (2018-01-04)
 
+
+### Build
+
+* Update CHANGELOG.md to v0.1.2 with Red Panda JPL ([17ecee42c343b7ec8b9b3d3572928a5c69307896](https://github.com/red-panda-ci/jpl-scripts/commit/17ecee42c343b7ec8b9b3d3572928a5c69307896))
 
 ### Update
 
