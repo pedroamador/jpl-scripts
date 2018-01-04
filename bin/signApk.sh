@@ -105,5 +105,7 @@ keytool -list -printcert -jarfile ${signedAlignedArtifactPath}
 rm -rf ${repositoryBasePath}
 
 # Restore permissions
-docker run -w "${appFolder}/" --rm -t -v "${appFolder}/":"${appFolder}/":rw  -v "${appFolder}/.gradle":/root/.gradle:rw -v "${appFolder}/.gem":/root/.gem:rw "${sdkVersion}" chown -R --reference=Jenkinsfile . || exit $?
+sign_user=$(id -u)
+sign_group=$(id -g)
+docker run -w "${appFolder}/" --rm -t -v "${appFolder}/":"${appFolder}/":rw  -v "${appFolder}/.gradle":/root/.gradle:rw -v "${appFolder}/.gem":/root/.gem:rw "${sdkVersion}" chown -R ${sign_user}:${sign_group} . || exit $?
 
