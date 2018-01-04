@@ -87,6 +87,10 @@ then
   exit 1
 fi
 
+# user / group
+sign_user=$(id -u)
+sign_group=$(id -g)
+
 signedUnalignedArtifactPath=$(echo ${artifactPath}|sed 's/-unsigned.apk/-signed-unaligned.apk/g')
 signedAlignedArtifactPath=$(echo ${artifactPath}|sed 's/-unsigned.apk/-signed-aligned.apk/g')
 repositoryBasePath="ci-scripts/.signing_repository"
@@ -100,12 +104,7 @@ echo -e "
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${repositoryBasePath}/${signingPath}/keystore.jks -storepass ${STORE_PASSWORD} -keypass ${KEY_PASSWORD} -signedjar ${signedUnalignedArtifactPath} ${artifactPath} ${KEY_ALIAS}
 " '$(find /usr/local/android-sdk-linux/build-tools/ -name zipalign|sort|tail -n1)' " -v -p 4 ${signedUnalignedArtifactPath} ${signedAlignedArtifactPath}
 keytool -list -printcert -jarfile ${signedAlignedArtifactPath}
-" |docker run -w "${appFolder}/" --rm -i -v "${appFolder}/":"${appFolder}/":rw -v "${appFolder}/.gradle":/root/.gradle:rw -v "${appFolder}/.gem":/root/.gem:rw "${sdkVersion}" /bin/bash
+" |docker run -u ${sign_user}:${sign_group} -w "${appFolder}/" --rm -i -v "${appFolder}/":"${appFolder}/":rw "${sdkVersion}" /bin/bash
 
 rm -rf ${repositoryBasePath}
-
-# Restore permissions
-sign_user=$(id -u)
-sign_group=$(id -g)
-docker run -w "${appFolder}/" --rm -t -v "${appFolder}/":"${appFolder}/":rw  -v "${appFolder}/.gradle":/root/.gradle:rw -v "${appFolder}/.gem":/root/.gem:rw "${sdkVersion}" chown -R ${sign_user}:${sign_group} . || exit $?
 
