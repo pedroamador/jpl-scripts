@@ -1,6 +1,20 @@
+<a name="0.1.2"></a>
+## 0.1.2 (2018-01-04)
+
+
+### Update
+
+* Don't use reference file for signApk ([f1df9751fa9618d0d8bc5d165a739e668e41cb0b](https://github.com/red-panda-ci/jpl-scripts/commit/f1df9751fa9618d0d8bc5d165a739e668e41cb0b))
+
+
+
 <a name="0.1.1"></a>
 ## 0.1.1 (2017-12-12)
 
+
+### Build
+
+* Update CHANGELOG.md to v0.1.1 with Red Panda JPL ([a8534bfc4cfb53358d058e38726542125fef8468](https://github.com/red-panda-ci/jpl-scripts/commit/a8534bfc4cfb53358d058e38726542125fef8468))
 
 ### Fix
 
